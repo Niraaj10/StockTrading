@@ -20,9 +20,12 @@ app.use(cookiesParser())
 
 
 //Routes 
-import userRoutes from './routes/user.routes.js'  
+import userRoutes from './routes/user.routes.js' 
+import stocksRoutes from './routes/favStocks.routes.js' 
+ 
 
 app.use('/api/user', userRoutes)
+app.use('/api/stocks', stocksRoutes)
 
 
 

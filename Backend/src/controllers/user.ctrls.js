@@ -1,9 +1,7 @@
 import { asyncHandler } from "../utils/asyncHandler.js";
 import { ApiError } from '../utils/ApiError.js';
-import { User } from '../models/user.models.js';
 import { ApiResponse } from "../utils/ApiResponse.js";
-import jwt from "jsonwebtoken"
-import mongoose from 'mongoose'
+import { User } from '../models/user.models.js';
 
 const generateAccessandRefreshToken = async (userId) => {
     try {
@@ -65,15 +63,15 @@ const registerUser = asyncHandler( async (req, res) => {
         throw new ApiError(500, "Something went wrong while registering the user")
     }
 
-    // return res.status(201).json(
-    //     new ApiResponse(200, createdUser, "User registered successfully")
-    // )
-    return res.status(201).json({
-        success: true,
-        status: 200,
-        data: createdUser,
-        message: "User registered successfully"
-    });
+    return res.status(201).json(
+        new ApiResponse(200, createdUser, "User registered successfully")
+    )
+    // return res.status(201).json({
+    //     success: true,
+    //     status: 200,
+    //     data: createdUser,
+    //     message: "User registered successfully"
+    // });
 
 })
 
@@ -165,8 +163,39 @@ const logoutUser = asyncHandler( async (req, res) => {
 })
 
 
+
+
+const updateAccountDetails = asyncHandler( async (req, res) => {
+    const { fullname, email } = req.body
+
+    if(!fullname || !email) {
+        throw new ApiError(400, "All fields are required")
+    }
+
+    const user = await User.findByIdAndUpdate(
+        req.user?._id,
+        {
+            $set: {
+                fullname,
+                email
+            }
+        },
+        {
+            new: true
+        }
+    ).select("-password")
+
+    return res
+    .status(200)
+    .json(
+        new ApiResponse(200, user, "Account Details updated successfully")
+    )
+})
+
+
 export { 
     registerUser,
     loginUser,
-    logoutUser
+    logoutUser,
+    updateAccountDetails
 }

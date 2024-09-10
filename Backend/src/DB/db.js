@@ -8,8 +8,7 @@ const connectDB = async () => {
             dbName: DB_NAME,
             useNewUrlParser: true,
             useUnifiedTopology: true,
-            ssl: true, // If needed
-            authSource: "admin", // If using authentication
+            authSource: "admin", 
         });
 
         console.log(`DB is connected to ${dbConnection.connection.host}`)
