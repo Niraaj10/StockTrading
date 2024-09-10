@@ -1,4 +1,4 @@
-import { app } from './app.js'
+import { app, server  } from './app.js'
 import connectDB from './DB/db.js'
 import dotenv from 'dotenv'
 
@@ -23,13 +23,20 @@ dotenv.config({
             throw error
         })
 
-        app.listen(PORT, () => {
-            console.log(`App is listening on port ${PORT}`);
-        })
+        // app.listen(PORT, () => {
+        //     console.log(`App is listening on port ${PORT}`);
+        // })
+        server.listen(PORT, () => {
+            console.log(`Server is listening on port ${PORT}`);
+        });
 
     } catch (error) {
         console.error("ERROR: ", error)
         throw err
     }
 })()
+
+
+
+
 
