@@ -9,7 +9,7 @@ dotenv.config({
 })
 
 // app.get('/', function (req, res) {
-//   res.send('App srunnign on 3000')
+//   res.send(`App srunnign on ${PORT}`)
 // })
 
 
