@@ -1,11 +1,35 @@
 import { app } from './app.js'
+import connectDB from './DB/db.js'
+import dotenv from 'dotenv'
 
-const PORT = 3000
+const PORT = process.env.PORT || 5001
 
-app.get('/', function (req, res) {
-  res.send('App srunnign on 3000')
+dotenv.config({
+    path: './.env'
 })
 
-app.listen(PORT, () => {
-  console.log("App is listening on ", PORT)
-})
+// app.get('/', function (req, res) {
+//   res.send('App srunnign on 3000')
+// })
+
+
+;( async () => {
+    try {
+        // await mongoose.connect(`${process.env.MONGODB_URL}/${DB_NAME}`);
+        await connectDB()
+        
+        app.on("errror", (error) => {
+            console.log("ERRR: ", error);
+            throw error
+        })
+
+        app.listen(PORT, () => {
+            console.log(`App is listening on port ${PORT}`);
+        })
+
+    } catch (error) {
+        console.error("ERROR: ", error)
+        throw err
+    }
+})()
+
