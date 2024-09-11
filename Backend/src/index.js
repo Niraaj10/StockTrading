@@ -6,17 +6,12 @@ import dotenv from 'dotenv'
 
 
 
-
 const PORT = process.env.PORT || 5001
 
 dotenv.config({
     path: './.env'
 })
 
-// app.get('/', (req, res) => {
-// //   res.send(`App srunnign on ${PORT}`)
-//     return res.sendFile('./test.html')
-// })
 
 
 ;( async () => {

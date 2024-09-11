@@ -9,11 +9,8 @@ import helmet from 'helmet';
 import path from 'path'
 import { fileURLToPath } from 'url';
 
-// Get __dirname equivalent in ES modules
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-
-
 
 
 const app = express()
@@ -66,7 +63,7 @@ app.use('/api/stocks', stocksRoutes)
 const server = http.createServer(app);
 const io = new Server(server, {
     cors: {
-      origin: '*',  // Allow all origins (for testing purposes)
+      origin: '*',  
       methods: ['GET', 'POST'],
     },
   });
