@@ -4,16 +4,21 @@ import io from 'socket.io-client';
 const Navbar = () => {
     const [liveStocks, setLiveStocks] = useState([]);
 
-    const socket = io('http://localhost:5001')
+    const socket = io('http://localhost:5001');
+    
+    socket.on('connect', () => {
+        console.log('Connected to the socket server');
+    });
+    
+    const setupSocketConnection = () => {
 
-    useEffect(() => {
         socket.on('stockUpdates', (data) => {
-            // setLiveStocks(data)
-
+            // console.log('Received stockUpdates:', data); 
+            
             const updatedData = data.map((stock) => {
                 const { c: currentPrice, pc: previousClose } = stock.data;
                 const percentageChange = ((currentPrice - previousClose) / previousClose) * 100;
-
+    
                 return {
                     symbol: stock.symbol,
                     currentPrice,
@@ -22,13 +27,27 @@ const Navbar = () => {
                 };
             });
             setLiveStocks(updatedData);
+        });
 
-        })
-        console.log(liveStocks)
-        return () => {
-            socket.disconnect();
-        };
-    }, [liveStocks]);
+        
+        socket.on('disconnect', () => {
+            console.log('Disconnected from the socket server');
+        });
+        
+        return socket;
+    };
+    console.log(liveStocks)
+    
+    // const socket = io('http://localhost:5001')
+
+
+
+
+
+    useEffect(() => {
+        setupSocketConnection()
+    }, []);
+
 
     return (
         <div className='Navbar border border-white'>
