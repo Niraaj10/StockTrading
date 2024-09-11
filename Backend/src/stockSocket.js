@@ -4,8 +4,8 @@ import { ApiError } from "./utils/ApiError.js";
 
 const FINNHUB_API_KEYY = process.env.ACCESS_TOKEN_SECRET
 console.log(process.env.ACCESS_TOKEN_SECRET)
-const stockSymbols = ['AAPL', 'TSLA', 'BINANCE:BTCUSDT', 'BINANCE:ETHUSDT', 'BINANCE:BNBUSDT',
-    'BINANCE:XRPUSDT', 'BINANCE:ADAUSDT', ];
+const stockSymbols = ['AAPL', 'TSLA', 'BINANCE:BTCUSDT', 'BINANCE:ETHUSDT',
+    'BINANCE:XRPUSDT' ];
 // const stockSymbols = ['AAPL', 'TSLA', 'BINANCE:BTCUSDT', 'BINANCE:BTCUSDT', 'BINANCE:ETHUSDT', 'BINANCE:BNBUSDT',
 //     'BINANCE:XRPUSDT', 'BINANCE:ADAUSDT', 'BINANCE:DOGEUSDT', 'BINANCE:DOTUSDT', 'BINANCE:SOLUSDT', 'BINANCE:AVAXUSDT', 'BINANCE:LTCUSDT', 'BINANCE:LINKUSDT', 'BINANCE:UNIUSDT', 'BINANCE:ATOMUSDT', 'BINANCE:FTTUSDT', 'BINANCE:NEOUSDT', 'BINANCE:VETUSDT', 'BINANCE:TRXUSDT', 'BINANCE:XLMUSDT', 'BINANCE:MATICUSDT'];
 
@@ -29,7 +29,7 @@ const stockSocket = async (io) => {
         }
     }
 
-    // setInterval(stockUpdates, 30000);
+    setInterval(stockUpdates, 15000);
 
     io.on('connection', (socket) => {
         console.log('User connected')
