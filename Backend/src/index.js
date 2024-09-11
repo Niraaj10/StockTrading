@@ -1,6 +1,11 @@
 import { app, server  } from './app.js'
+import express from 'express'
 import connectDB from './DB/db.js'
 import dotenv from 'dotenv'
+
+
+
+
 
 const PORT = process.env.PORT || 5001
 
@@ -8,8 +13,9 @@ dotenv.config({
     path: './.env'
 })
 
-// app.get('/', function (req, res) {
-//   res.send(`App srunnign on ${PORT}`)
+// app.get('/', (req, res) => {
+// //   res.send(`App srunnign on ${PORT}`)
+//     return res.sendFile('./test.html')
 // })
 
 
