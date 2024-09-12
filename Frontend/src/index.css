@@ -2,6 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
 
 body {
   margin: 0;
@@ -18,14 +20,17 @@ body {
 .green-glow {
   /* box-shadow: 0 0 25px 15px rgba(0, 255, 0, 0.7); */
   box-shadow: 0 0 256px 140px rgb(117 255 117 / 25%);
-  
+
 }
 
 /* Floating animation */
 @keyframes float {
-  0%, 100% {
+
+  0%,
+  100% {
     transform: translateY(20px);
   }
+
   50% {
     transform: translateY(-40px);
   }
@@ -56,4 +61,16 @@ body {
   background: linear-gradient(270deg, #84ff5f, #000000, #6afb78, #000000);
   background-size: 400% 40%;
   animation: gradient-animation 100s ease infinite;
+}
+
+.logoG {
+  background: -webkit-linear-gradient(180deg, rgb(255, 255, 255) 20%, rgb(0, 255, 17) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent
+}
+
+.logoFont {
+  font-family: "Bebas Neue", sans-serif;
+  font-weight: 400;
+  font-style: normal;
 }

@@ -4,6 +4,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import Navbar from './components/Navbar'
 import Home from './components/Home'
 import PartBg from './components/PartGb'
+import Login from './components/Login'
 
 function App() {
 
@@ -22,7 +23,8 @@ function App() {
         <Routes>
                 <Route index element={<Home />} />
                 {/* <Route path='/videos' element={<Videos />} /> */}
-              </Routes>
+                <Route path='/login' element={<Login />} />
+        </Routes>
       </div>
       </BrowserRouter>
     </>

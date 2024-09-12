@@ -45,7 +45,8 @@ const getStock = asyncHandler(async (req, res) => {
     const { stock } = req.params
 
     try {
-        const response = await axios.get(`https://finnhub.io/api/v1/quote?symbol=${stock}&token=${process.env.FINNHUB_API_KEY}`)
+        // const response = await axios.get(`https://finnhub.io/api/v1/quote?symbol=${stock}&token=${process.env.FINNHUB_API_KEY}`)
+        const response = await axios.get(`https://finnhub.io/api/v1/stock/profile2?symbol=${stock}&token=${process.env.FINNHUB_API_KEY}`)
 
         console.log(response)
         const stockInfo = response.data

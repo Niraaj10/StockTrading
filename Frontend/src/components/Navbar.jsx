@@ -1,17 +1,18 @@
 import React, { useEffect, useState } from 'react'
 import io from 'socket.io-client';
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
     const [liveStocks, setLiveStocks] = useState([]);
 
     const socket = io('http://localhost:5001');
     
-    socket.on('connect', () => {
-        console.log('Connected to the socket server');
-    });
-    
     const setupSocketConnection = () => {
-
+        
+        socket.on('connect', () => {
+            console.log('Connected to the socket server');
+        });
+        
         socket.on('stockUpdates', (data) => {
             // console.log('Received stockUpdates:', data); 
             
@@ -56,9 +57,10 @@ const Navbar = () => {
 
 
             <div className='upperbar py-3 flex justify-between items-center px-20'>
-                <div className='logo'>
-                    STOCK/
-                    <span className='text-green-500'>TRADING</span>
+                <div className='logo font-bold logoG  text-2xl'>
+                    {/* STOCKTRADING */}
+                    ViewChart
+                    {/* <span className='text-green-500'>TRADING</span> */}
                 </div>
 
                 <div className='Sec flex'>
@@ -70,7 +72,9 @@ const Navbar = () => {
 
                 <div className='User'>
                     <div className='border border-[#303030] p-2 px-5 rounded-xl'>
-                        Login
+                        <Link to='/login'>
+                          Login
+                        </Link>
                     </div>
                 </div>
             </div>
