@@ -31,7 +31,14 @@ const Login = () => {
 
 
     const handleLogin = async (e) => {
-        
+        e.preventDefault();
+        // console.log(loginUser)
+        try {
+            await login(loginUser.username, loginUser.password);
+        } catch (error) {
+            console.log(error.message);
+            alert("Please enter correct username and password");
+        }
     };
 
 
