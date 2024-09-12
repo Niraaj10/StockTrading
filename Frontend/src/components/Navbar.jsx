@@ -2,6 +2,8 @@ import React, { useContext, useEffect, useState } from 'react'
 import io from 'socket.io-client';
 import { Link } from "react-router-dom";
 import { UserContext } from '../UserContext';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Navbar = () => {
     const [liveStocks, setLiveStocks] = useState([]);
@@ -57,6 +59,19 @@ const Navbar = () => {
     return (
         <div className='Navbar px-6'>
             {/* Navbar */}
+
+            <ToastContainer
+                position="top-right"
+                autoClose={5000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="light"
+                />
 
 
             <div className='upperbar py-3 flex justify-between items-center px-20'>

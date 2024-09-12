@@ -1,5 +1,7 @@
 import React, { createContext, useState } from "react";
 import axios from "axios";
+import 'react-toastify/dist/ReactToastify.css';
+import { toast } from 'react-toastify';
 
 
 
@@ -28,6 +30,19 @@ export const UserProvider = ({ children }) => {
   const logout = async () => {
     try {
       const res = await axios.post(`${baseUrl}/user/logout`, {}, { withCredentials: true });
+      
+      toast('Logout Successfully', {
+        position: "bottom-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+        progressStyle: { backgroundColor: 'red', }
+    });
+
       console.log(res);
       setUser(null); 
     } catch (error) {

@@ -2,6 +2,8 @@ import React, { useContext, useState } from 'react'
 import { Link, useNavigate } from "react-router-dom";
 import axios from 'axios'
 import { UserContext } from '../UserContext';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Login = () => {
     const { login } = useContext(UserContext)
@@ -43,10 +45,70 @@ const Login = () => {
         }
     };
 
+const baseUrl = 'http://localhost:5001/api'
+
+    const handleSign = async (e) => {
+        e.preventDefault();
+        // console.log(signupUser);
+        // console.log(profile);
+
+        // const formData = new FormData();
+        // formData.append('username', signupUser.username);
+        // formData.append('password', signupUser.password);
+        // formData.append('fullname', signupUser.fullname);
+        // formData.append('email', signupUser.email);
+        
+
+        try {
+            const res = await axios.post(`${baseUrl}/user/register`, {
+                username: signupUser.username,
+                password: signupUser.password,
+                fullname: signupUser.fullname,
+                email: signupUser.email,
+            });
+
+            toast('Account Created Successfully, Please login', {
+                position: "bottom-center",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "dark",
+                progressStyle: { backgroundColor: 'red', }
+            });
+
+            console.log(res.data);
+            setIslogin(!islogin)
+
+            // navigate('/')
+        } catch (error) {
+            console.log(error.message);
+            alert("Please enter valid uesr data");
+        }
+    };
+
+
 
     return (
         <div className='Login'>
             Loginn
+
+            <ToastContainer
+                position="top-right"
+                autoClose={5000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="light"
+                />
+
+
             <div className='Login w-full h-full  my-auto mx-auto'>
 
                 <div className='mx-auto w-[30vw] h-[60vh] flex flex-col mt-20 justify-center items-center px-7 '>
@@ -81,7 +143,7 @@ const Login = () => {
                     </form>
 
                     {/* Signup Form */}
-                    <form onSubmit='' className={`SignupForm flex flex-col w-full items-center ${islogin ? "hidden" : ""} `}>
+                    <form onSubmit={handleSign} className={`SignupForm flex flex-col w-full items-center ${islogin ? "hidden" : ""} `}>
                         <div className='text-xl font-bold mb-7'>Signup</div>
 
                         <input

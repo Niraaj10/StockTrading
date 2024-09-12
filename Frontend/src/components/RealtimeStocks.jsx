@@ -7,7 +7,7 @@ const RealtimeStocks = () => {
       <div className='stocktable'>
 
         <div className='border border-[#303030] rounded-lg  text-white'>
-          <table class="table-fixed border-collapse bg-gray-400 bg-opacity-5">
+          <table className="table-fixed border-collapse bg-gray-400 bg-opacity-5">
             <thead className=' '>
               <tr className=' '>
                 <th className='border-r border-[#303030] p-2'>Song</th>
