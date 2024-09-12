@@ -52,7 +52,7 @@ const Navbar = () => {
 
 
     useEffect(() => {
-        // setupSocketConnection()
+        setupSocketConnection()
     }, []);
 
 
@@ -88,7 +88,7 @@ const Navbar = () => {
                     </ul>
                 </div>
 
-                <div className='User'>
+                <div className='User flex justify-center items-center gap-4'>
                     {
                         user ? <>
                             <div className='border border-[#303030] p-2 px-5 rounded-xl'>

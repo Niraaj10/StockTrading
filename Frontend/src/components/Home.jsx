@@ -19,7 +19,7 @@ const Home = () => {
         <div className='absolute left-[300px] rounded-full  mx-auto float green-glow'>   </div>
         <div className='absolute bottom-[100px] right-0 rounded-full  mx-auto float green-glow'>   </div>
 
-        <div className='main flex flex-col justify-center items-center w-full h-full'>
+        <div className='main mt-24 flex flex-col justify-center items-center w-full h-full'>
           <div className='text-8xl font-bold'>
           Where the world see Charts
           </div>

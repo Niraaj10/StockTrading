@@ -50,14 +50,7 @@ const baseUrl = 'http://localhost:5001/api'
     const handleSign = async (e) => {
         e.preventDefault();
         // console.log(signupUser);
-        // console.log(profile);
-
-        // const formData = new FormData();
-        // formData.append('username', signupUser.username);
-        // formData.append('password', signupUser.password);
-        // formData.append('fullname', signupUser.fullname);
-        // formData.append('email', signupUser.email);
-        
+        // console.log(profile);        
 
         try {
             const res = await axios.post(`${baseUrl}/user/register`, {

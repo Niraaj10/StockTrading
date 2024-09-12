@@ -5,15 +5,17 @@ import { addToFavoriteStock, getFavStocks, getStock, removeFromFavoriteStock } f
 
 const router = Router();
 
-router.use(verfiyJWT)
+// router.use(verfiyJWT)
 
-router.route('/getFavorites').get(getFavStocks)
+router.route('/getFavorites').get(verfiyJWT, getFavStocks)
 
-router.route('/getStock/:stock').get(getStock)
+router.route('/getStock/:stock').get(verfiyJWT, getStock)
 
-router.route('/addFavoriteStock').post(addToFavoriteStock)
+router.route('/addFavoriteStock').post(verfiyJWT, addToFavoriteStock)
 
-router.route('/removeFavoriteStock').delete(removeFromFavoriteStock)
+router.route('/removeFavoriteStock').delete(verfiyJWT, removeFromFavoriteStock)
+
+
 
 
 
