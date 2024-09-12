@@ -1,11 +1,12 @@
 import React, { useContext, useState } from 'react'
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from 'axios'
 import { UserContext } from '../UserContext';
 
 const Login = () => {
     const { login } = useContext(UserContext)
     const [islogin, setIslogin] = useState(true);
+    const navigate = useNavigate();  
     const [loginUser, setLoginUser] = useState({
         username: '',
         password: ''
@@ -35,6 +36,7 @@ const Login = () => {
         // console.log(loginUser)
         try {
             await login(loginUser.username, loginUser.password);
+            navigate('/')
         } catch (error) {
             console.log(error.message);
             alert("Please enter correct username and password");

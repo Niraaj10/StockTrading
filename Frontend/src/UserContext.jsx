@@ -1,6 +1,6 @@
 import React, { createContext, useState } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+
 
 
 export const UserContext = createContext();
@@ -8,16 +8,16 @@ export const UserContext = createContext();
 export const UserProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(false);
-  const navigate = useNavigate(); 
+  
 
   const baseUrl = 'http://localhost:5001/api'
 
   const login = async (username, password) => {
     setLoading(true);
     try {
-      const { data } = await axios.post(`${baseUrl}/user/login`, { username, password }, { withCredentials: true });
-      setUser(data.user); 
-      navigate('/')
+        const res = await axios.post(`${baseUrl}/user/login`, { username, password }, { withCredentials: true });
+    //   console.log(res)
+      setUser(res.data.message.user); 
     } catch (error) {
       throw new Error(error.response.data.message);
     } finally {
@@ -26,9 +26,15 @@ export const UserProvider = ({ children }) => {
   };
 
   const logout = async () => {
-    await axios.post("/api/auth/logout", {}, { withCredentials: true });
-    setUser(null); 
+    try {
+      const res = await axios.post(`${baseUrl}/user/logout`, {}, { withCredentials: true });
+      console.log(res);
+      setUser(null); 
+    } catch (error) {
+      console.error(error.response ? error.response.data.message : error.message);
+    }
   };
+
 
   return (
     <UserContext.Provider value={{ user, login, logout, loading }}>
