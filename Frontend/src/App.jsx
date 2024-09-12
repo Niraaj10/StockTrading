@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import './index.css'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import { UserProvider } from "./UserContext";
 import Navbar from './components/Navbar'
 import Home from './components/Home'
 import PartBg from './components/PartGb'
@@ -12,20 +13,25 @@ function App() {
   return (
     <>
       <BrowserRouter>
-      <div className=' min-h-screen bg-gradient-to-b from-gray-900 to-black'>
-
-          {/* heyyyy */}
-          {/* <PartBg /> */}
-
-          <Navbar />
+          <UserProvider>
 
 
-        <Routes>
-                <Route index element={<Home />} />
-                {/* <Route path='/videos' element={<Videos />} /> */}
-                <Route path='/login' element={<Login />} />
-        </Routes>
-      </div>
+          <div className=' min-h-screen bg-gradient-to-b from-gray-900 to-black'>
+
+            {/* heyyyy */}
+            {/* <PartBg /> */}
+
+            <Navbar />
+
+
+            <Routes>
+              <Route index element={<Home />} />
+              {/* <Route path='/videos' element={<Videos />} /> */}
+              <Route path='/login' element={<Login />} />
+            </Routes>
+          </div>
+
+        </UserProvider>
       </BrowserRouter>
     </>
   )

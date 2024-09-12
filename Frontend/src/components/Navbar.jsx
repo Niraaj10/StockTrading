@@ -47,7 +47,7 @@ const Navbar = () => {
 
 
     useEffect(() => {
-        setupSocketConnection()
+        // setupSocketConnection()
     }, []);
 
 
