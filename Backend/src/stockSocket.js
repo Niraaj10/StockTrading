@@ -29,20 +29,6 @@ const stockSocket = async (io) => {
         }
     }
 
-    // const stockChartUpdates = async (stock) => {
-    //     try {
-    //         const res = await axios.get(`https://finnhub.io/api/v1/quote?symbol=${stock}&token=crg8up1r01qptaplmfk0crg8up1r01qptaplmfkg`);
-    //         const stockChart = res.data;
-    //         console.log(res)
-            
-    //         io.emit('stockChartUpdates', stockChart)
-    //     } catch (error) {
-    //         throw new ApiError(404, 'Error fetching stock data:', error)
-    //     }
-    // }
-
-
-
 
     // setInterval(stockUpdates, 10000);
     
