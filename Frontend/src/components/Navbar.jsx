@@ -15,7 +15,7 @@ const Navbar = () => {
     const setupSocketConnection = () => {
 
         socket.on('connect', () => {
-            console.log('Connected to the socket server');
+            // console.log('Connected to the socket server');
         });
 
         socket.on('stockUpdates', (data) => {
@@ -77,7 +77,9 @@ const Navbar = () => {
             <div className='upperbar py-3 flex justify-between items-center px-20'>
                 <div className='logo font-bold logoG  text-2xl'>
                     {/* STOCKTRADING */}
+                    <Link to='/'>
                     ViewChart
+                    </Link>
                     {/* <span className='text-green-500'>TRADING</span> */}
                 </div>
 

@@ -28,7 +28,8 @@ const Chart = () => {
                 withCredentials: true
             })
 
-            console.log(res)
+            // console.log(res)
+            favStockss();
             // setFavStocks(res.data.message.favStocks)
         } catch (error) {
             console.error(error)
@@ -38,7 +39,7 @@ const Chart = () => {
 
     useEffect(() => {
         favStockss()
-    }, [favStocks])
+    }, [])
 
     console.log(favStocks)
 
@@ -48,9 +49,9 @@ const Chart = () => {
             Chart
             Chart
 
-            <div className='charts px-10 pb-5 w-full h-[86vh] border-b flex  gap-7 justify-center items-top '>
+            <div className='charts px-10 pb-5 w-full h-[80vh] border-b flex  gap-7 justify-center items-top '>
 
-                <div className='FavStocks p-2 basis-[30%] border border-[#303030] '>
+                <div className='FavStocks p-2 basis-[30%] overflow-y-scroll hide-scrollbar  border border-[#303030] '>
                     Fav Stocks
 
                     <div>
@@ -60,7 +61,7 @@ const Chart = () => {
                                     <div className='flex justify-between p-2 border-b border-[#303030]'>
 
                                         <div>{stock.symbol}</div>
-                                        
+
 
                                         <div onClick={() => removeFavoriteStock(stock.symbol)} className='border border-[#303030] p-1 px-3 rounded-xl text-red-500'>
                                             Rmove

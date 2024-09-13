@@ -114,7 +114,7 @@ const baseUrl = 'http://localhost:5001/api'
                             type="text"
                             placeholder='username'
                             name='username'
-                            className='p-3 w-full px-6 rounded-xl bg-gray-500 bg-opacity-5 focus:outline-green-500 focus:border-none outline-none border border-[#303030]'
+                            className='p-3 w-full px-6 rounded-xl bg-gray-500 bg-opacity-5 focus:outline-green-500 focus:border-none outline-none border border-[rgb(48,48,48)]'
                             onChange={onChangeLogin}
                             required
                         />

@@ -29,7 +29,23 @@ const stockSocket = async (io) => {
         }
     }
 
-    setInterval(stockUpdates, 10000);
+    // const stockChartUpdates = async (stock) => {
+    //     try {
+    //         const res = await axios.get(`https://finnhub.io/api/v1/quote?symbol=${stock}&token=crg8up1r01qptaplmfk0crg8up1r01qptaplmfkg`);
+    //         const stockChart = res.data;
+    //         console.log(res)
+            
+    //         io.emit('stockChartUpdates', stockChart)
+    //     } catch (error) {
+    //         throw new ApiError(404, 'Error fetching stock data:', error)
+    //     }
+    // }
+
+
+
+
+    // setInterval(stockUpdates, 10000);
+    
 
     io.on('connection', (socket) => {
         console.log('User connected')
@@ -37,6 +53,30 @@ const stockSocket = async (io) => {
         socket.on('disconnect', () => {
             console.log('User disconnected')
         })
+
+
+        socket.on('selectStock', (symbol) => {
+            // console.log(`Stock selected: ${symbol}`);
+        
+            const stockInterval = setInterval(async () => {
+              try {
+                const res = await axios.get(`https://finnhub.io/api/v1/quote?symbol=${symbol}&token=crg8up1r01qptaplmfk0crg8up1r01qptaplmfkg`);
+                const stockChart = res.data;
+        
+                console.log(res.data)
+
+                socket.emit('stockChartUpdates', stockChart);
+              } catch (error) {
+                console.error('Error fetching stock data:', error);
+              }
+            }, 5000); 
+        
+            socket.on('disconnect', () => {
+              console.log('Client disconnected');
+              clearInterval(stockInterval); 
+            });
+
+          });
     })
 }
 
