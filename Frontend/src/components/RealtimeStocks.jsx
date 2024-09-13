@@ -1,15 +1,26 @@
-import axios from 'axios';
 import React, { useEffect, useState } from 'react'
+import axios from 'axios';
+import { Link, useNavigate } from 'react-router-dom';
 
 const RealtimeStocks = () => {
   const [results, setResults] = useState([]);
   const [stockPrices, setStockPrices] = useState({});
 
+  const navigate = useNavigate(); 
+
+  const handleButtonClick = (ticker) => {
+    navigate(`/stockDetail/${ticker}`);
+  };
+
+
+
+  
+
   const stocksInfo = ['AAPL', 'TSLA', 'AMZN', 'GOOGL', 'MSFT', 'NFLX', 'META', 'NVDA']
   // const stocksInfo = ['AAPL', 'TSLA', 'AMZN', 'GOOGL', 'MSFT', 'NFLX', 'META', 'NVDA', 'BRK.B', 'JPM','WMT', 'DIS', 'BABA', 'AMD', 'INTC', 'PYPL', 'BA', 'KO', 'PEP',]
 
   const apiKey = import.meta.env.VITE_FINNHUB_API_KEY;
-  console.log('API Key:', apiKey);
+  // console.log('API Key:', apiKey);
 
   const searchStocks = async (stock) => {
     try {
@@ -52,7 +63,7 @@ const RealtimeStocks = () => {
         const prices = await Promise.all(
           stocksInfo.map(async (stock) => {
             const res = await resultStockPrice(stock);
-            console.log(res)
+            // console.log(res)
             return { [stock]: res };
           })
         );
@@ -101,8 +112,12 @@ const RealtimeStocks = () => {
     <div className='mt-20'>
       {/* Real Time Stocks */}
       <div className='stocktable'>
-
-
+{/* 
+        <div className='border border-[#303030] p-2 px-5 rounded-xl'>
+          <Link to='/login'>
+            Login
+          </Link>
+        </div> */}
 
         <div className='border border-[#303030] rounded-lg  text-white'>
 
@@ -114,6 +129,7 @@ const RealtimeStocks = () => {
                 <th className=' border-[#303030] p-2'>Share</th>
                 <th className='border-l border-[#303030] p-2'>MarketCap</th>
                 <th className='border-l border-[#303030] p-2'>MarketCap</th>
+                <th className='border-l border-[#303030] p-2'>MarketCap</th>
               </tr>
             </thead>
 
@@ -122,11 +138,24 @@ const RealtimeStocks = () => {
               results.map((result, index) =>
                 <tbody>
                   <tr key={index}>
-                    <td className='border-r border-t border-[#303030] p-2 px-7'>{result.name}</td>
+                    <td onClick={() => handleRowClick(result.ticker)} className='border-r border-t border-[#303030] p-2 px-7'>
+                      {/* <Link to={`/stockDetail/${result.ticker}`}>
+                      {result.name} ({result.ticker})
+                      </Link> */}
+                      {result.name} ({result.ticker})
+                    </td>
+
                     <td className='border-r border-t border-[#303030] p-2 px-7'>{result.currency}</td>
                     <td className='border-l border-t border-[#303030] p-2 px-7'>{result.shareOutstanding}</td>
                     <td className='border-l border-t border-[#303030] p-2 px-7'>{formatMarketCap(result.marketCapitalization)}</td>
-                    <td className='border-l border-t border-[#303030] p-2 px-7 text-green-500'>{stockPrices[result.ticker] ? stockPrices[result.ticker].c : 'Loading...'}</td>
+                    <td className='border-l border-t border-[#303030] p-2 px-7 text-green-500'>
+                      {stockPrices[result.ticker] ? stockPrices[result.ticker].c : 'Loading...'}
+                    </td>
+                    <td>
+                    <button key={result.ticker} onClick={() => handleButtonClick(result.ticker)}>
+          {result.name} ({result.ticker})
+        </button>
+                    </td>
                   </tr>
 
 
@@ -144,3 +173,6 @@ const RealtimeStocks = () => {
 }
 
 export default RealtimeStocks
+
+
+
