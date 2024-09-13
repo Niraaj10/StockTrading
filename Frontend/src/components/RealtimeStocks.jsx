@@ -71,7 +71,7 @@ const RealtimeStocks = () => {
         const stockPricesObject = prices.reduce((acc, cur) => ({ ...acc, ...cur }), {});
         setStockPrices(stockPricesObject);
 
-        // console.log(stockPrices)
+        console.log(stockPrices)
 
       } catch (error) {
         console.error('Error fetching all stock data:', error);
@@ -81,7 +81,7 @@ const RealtimeStocks = () => {
     fetchAllStocks();
   }, []);
 
-  // console.log(results)
+  console.log(results)
 
 
   useEffect(() => {
@@ -112,12 +112,8 @@ const RealtimeStocks = () => {
     <div className='mt-20'>
       {/* Real Time Stocks */}
       <div className='stocktable'>
-{/* 
-        <div className='border border-[#303030] p-2 px-5 rounded-xl'>
-          <Link to='/login'>
-            Login
-          </Link>
-        </div> */}
+
+
 
         <div className='border border-[#303030] rounded-lg  text-white'>
 
@@ -129,7 +125,7 @@ const RealtimeStocks = () => {
                 <th className=' border-[#303030] p-2'>Share</th>
                 <th className='border-l border-[#303030] p-2'>MarketCap</th>
                 <th className='border-l border-[#303030] p-2'>MarketCap</th>
-                <th className='border-l border-[#303030] p-2'>MarketCap</th>
+                {/* <th className='border-l border-[#303030] p-2'>MarketCap</th> */}
               </tr>
             </thead>
 
@@ -151,11 +147,11 @@ const RealtimeStocks = () => {
                     <td className='border-l border-t border-[#303030] p-2 px-7 text-green-500'>
                       {stockPrices[result.ticker] ? stockPrices[result.ticker].c : 'Loading...'}
                     </td>
-                    <td>
+                    {/* <td>
                     <button key={result.ticker} onClick={() => handleButtonClick(result.ticker)}>
           {result.name} ({result.ticker})
         </button>
-                    </td>
+                    </td> */}
                   </tr>
 
 

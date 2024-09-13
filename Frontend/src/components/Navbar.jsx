@@ -43,7 +43,7 @@ const Navbar = () => {
 
         return socket;
     };
-    console.log(liveStocks)
+    // console.log(liveStocks)
 
     // const socket = io('http://localhost:5001')
 
@@ -83,6 +83,11 @@ const Navbar = () => {
 
                 <div className='Sec flex'>
                     <ul className='flex gap-9'>
+                        <li>
+                            <Link to='/charts'>
+                            Charts
+                            </Link>
+                        </li>
                         <li>News</li>
                         <li>About Us</li>
                     </ul>
@@ -102,7 +107,6 @@ const Navbar = () => {
                         </> : <>
                             <div className='border border-[#303030] p-2 px-5 rounded-xl'>
                                 <Link to='/login'>
-
                                     Login
                                 </Link>
                             </div>

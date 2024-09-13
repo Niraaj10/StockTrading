@@ -6,6 +6,7 @@ import Navbar from './components/Navbar'
 import Home from './components/Home'
 import Login from './components/Login'
 import StockDetails from './components/StockDetails';
+import Chart from './components/Chart';
 
 
 
@@ -37,7 +38,9 @@ function App() {
             />
 
 
-            <Route path="/stockDetail/:stock" element={<StockDetails />} />
+            {/* <Route path="/stockDetail/:stock" element={<StockDetails />} /> */}
+            {/* <Route path="/stockDetail" element={<StockDetails />} /> */}
+            <Route path="/charts" element={<Chart />} />
 
           </Routes>
         </div>

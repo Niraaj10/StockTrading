@@ -1,16 +1,22 @@
 import React from 'react'
-import { useParams } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 
 const StockDetails = () => {
-    const { stock } = useParams()
+    // const { stock } = useParams()
 
-    console.log(stock)
+    // console.log(stock)
 
   return (
     <>
+      <div className=''>
       StockDetails
-      <div>
 
+        {/* <div className='border border-[#303030] p-2 px-5 rounded-xl'>
+          <Link to='/login'>
+            Login
+          </Link>
+        </div> */}
+        
 
 
       </div>
