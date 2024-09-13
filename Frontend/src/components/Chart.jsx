@@ -51,8 +51,10 @@ const Chart = () => {
 
             <div className='charts px-10 pb-5 w-full h-[80vh] border-b flex  gap-7 justify-center items-top '>
 
-                <div className='FavStocks p-2 basis-[30%] overflow-y-scroll hide-scrollbar  border border-[#303030] '>
-                    Fav Stocks
+                <div className='FavStocks p-2 basis-[30%] overflow-y-scroll  hide-scrollbar  border border-[#303030] '>
+                    <div className='flex justify-center font-bold text-sm'>
+                    Favorite Stocks
+                    </div>
 
                     <div>
                         {

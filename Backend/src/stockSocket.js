@@ -30,7 +30,7 @@ const stockSocket = async (io) => {
     }
 
 
-    // setInterval(stockUpdates, 10000);
+    setInterval(stockUpdates, 10000);
     
 
     io.on('connection', (socket) => {
