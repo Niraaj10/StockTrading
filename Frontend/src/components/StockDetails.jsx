@@ -30,7 +30,7 @@ const StockDetails = ({ stock }) => {
     }
   
     socket.on('connect', () => {
-      console.log('Connected to the socket server');
+      // console.log('Connected to the socket server');
     });
   
     socket.on('stockChartUpdates', (data) => {
@@ -49,7 +49,7 @@ const StockDetails = ({ stock }) => {
     };
   }, [selectedStock]);
 
-  console.log(stockData)
+  // console.log(stockData)
 
 
 

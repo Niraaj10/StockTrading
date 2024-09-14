@@ -72,7 +72,7 @@ const baseUrl = 'http://localhost:5001/api'
                 progressStyle: { backgroundColor: 'red', }
             });
 
-            console.log(res.data);
+            // console.log(res.data);
             setIslogin(!islogin)
 
             // navigate('/')
