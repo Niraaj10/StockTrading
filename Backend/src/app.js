@@ -63,7 +63,8 @@ app.use('/api/stocks', stocksRoutes)
 const server = http.createServer(app);
 const io = new Server(server, {
     cors: {
-      origin: '*',  
+      // origin: '*',  
+      origin: process.env.CORS_ORIGIN || '*',  
       methods: ['GET', 'POST'],
     },
   });
