@@ -71,14 +71,14 @@ const Navbar = () => {
                 draggable
                 pauseOnHover
                 theme="light"
-                />
+            />
 
 
             <div className='upperbar py-3 flex justify-between items-center px-20'>
                 <div className='logo font-bold logoG  text-2xl'>
                     {/* STOCKTRADING */}
                     <Link to='/'>
-                    ViewChart
+                        ViewChart
                     </Link>
                     {/* <span className='text-green-500'>TRADING</span> */}
                 </div>
@@ -87,11 +87,15 @@ const Navbar = () => {
                     <ul className='flex gap-9'>
                         <li>
                             <Link to='/charts'>
-                            Charts
+                                Charts
                             </Link>
                         </li>
-                        <li>News</li>
-                        <li>About Us</li>
+                        <li>
+                            <Link to='/news'>
+                                News
+                            </Link>
+                        </li>
+                        {/* <li>About Us</li> */}
                     </ul>
                 </div>
 

@@ -7,6 +7,7 @@ import Home from './components/Home'
 import Login from './components/Login'
 import StockDetails from './components/StockDetails';
 import Chart from './components/Chart';
+import News from './components/News';
 
 
 
@@ -41,6 +42,8 @@ function App() {
             {/* <Route path="/stockDetail/:stock" element={<StockDetails />} /> */}
             {/* <Route path="/stockDetail" element={<StockDetails />} /> */}
             <Route path="/charts" element={<Chart />} />
+
+            <Route path="/news" element={<News />} />
 
           </Routes>
         </div>

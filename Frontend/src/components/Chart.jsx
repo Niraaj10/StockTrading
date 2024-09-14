@@ -46,9 +46,9 @@ const Chart = () => {
     const [selectStock, setSelectStock] = useState('');
 
     const tabs = [
-        { name: "Favorites", content: favStocks },
         { name: "Stocks", content: Stockss },
-        { name: "Currency", content: Currencies },
+        { name: "Currencies", content: Currencies },
+        { name: "Favorites", content: favStocks },
     ];
 
     const [activeTab, setActiveTab] = useState(tabs[0].name);
@@ -112,19 +112,18 @@ const Chart = () => {
 
     return (
         <>
-            Chart
-            Chart
+            {/* Chart */}
 
-            <div className='charts px-10 pb-5 w-full h-[80vh] border-b flex  gap-7 justify-center items-top '>
+            <div className='charts pt-4 px-10 pb-5 w-full h-[80vh] flex  gap-7 justify-center items-top '>
 
-                <div className='FavStocks p-2 basis-[30%] overflow-y-scroll  hide-scrollbar  border border-[#303030] '>
-                    <div className='flex  font-bold text-sm'>
+                <div className='FavStocks p-2 basis-[30%] overflow-y-scroll  hide-scrollbar  border-r border-[#303030] '>
+                    <div className='flex border-b border-[#303030]  font-bold text-sm'>
 
                         {tabs.map((tab) => (
                             <button
                                 key={tab.name}
                                 onClick={() => setActiveTab(tab.name)}
-                                className={`p-2 hover:border-b-2 ${activeTab === tab.name ? "text-green-600 border-b-2 border-green-600" : ""
+                                className={` flex items-center p-2 hover:border-b-2 ${activeTab === tab.name ? "text-green-600 border-b-2 border-green-600" : ""
                                     }`}
                             >
                                 {tab.name}
@@ -176,7 +175,7 @@ const Chart = () => {
                                             )}
 
 
-                                            {(activeTab === 'Stocks' || activeTab === 'Currency') && (
+                                            {(activeTab === 'Stocks' || activeTab === 'Currencies') && (
                                                 <div onClick={() => addFavoriteStock(stock.symbol)} className='border border-[#303030] p-1 px-3 rounded-xl text-green-500'>
                                                     Add to Favorites
                                                 </div>
@@ -191,7 +190,7 @@ const Chart = () => {
 
                 </div>
 
-                <div className='border p-2 basis-[70%] border-[#303030] '>
+                <div className=' p-2 basis-[70%]  '>
                     <StockDetails stock={selectStock} />
                 </div>
             </div>
