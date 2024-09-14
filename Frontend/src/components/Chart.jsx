@@ -54,12 +54,12 @@ const Chart = () => {
     const [activeTab, setActiveTab] = useState(tabs[0].name);
 
 
-
+const ServerUrl = 'https://stocktrading-1.onrender.com/api'
     const baseUrl = 'http://localhost:5001/api'
 
     const favStockss = async () => {
         try {
-            const res = await axios.get(`${baseUrl}/stocks/getFavorites`, {
+            const res = await axios.get(`${ServerUrl}/stocks/getFavorites`, {
                 withCredentials: true
             })
 
@@ -72,7 +72,7 @@ const Chart = () => {
 
     const removeFavoriteStock = async (stock) => {
         try {
-            const res = await axios.delete(`${baseUrl}/stocks/removeFavoriteStock`, {
+            const res = await axios.delete(`${ServerUrl}/stocks/removeFavoriteStock`, {
                 data: { stock },
                 withCredentials: true
             })
@@ -87,7 +87,7 @@ const Chart = () => {
 
     const addFavoriteStock = async (stock) => {
         try {
-            const res = await axios.post(`${baseUrl}/stocks/addFavoriteStock`,  {
+            const res = await axios.post(`${ServerUrl}/stocks/addFavoriteStock`,  {
                 stock: stock, 
               },  {
                 withCredentials: true
@@ -162,7 +162,7 @@ const Chart = () => {
                                     <div key={index} className='stock-item px-5 w-full'>
                                         <div className='flex justify-between p-2 border-b border-[#303030]'>
 
-                                            <div onClick={() => setSelectStock(stock.symbol)}>
+                                            <div onClick={() => setSelectStock(stock.symbol)} className='cursor-pointer'>
                                                 {/* {stock.symbol} */}
                                                 {stock.symbol.includes(':') ? stock.symbol.split(':')[1] : stock.symbol}
                                             </div>

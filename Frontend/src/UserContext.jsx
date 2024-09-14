@@ -13,11 +13,12 @@ export const UserProvider = ({ children }) => {
   
 
   const baseUrl = 'http://localhost:5001/api'
+  const ServerUrl = 'https://stocktrading-1.onrender.com/api'
 
   const login = async (username, password) => {
     setLoading(true);
     try {
-        const res = await axios.post(`${baseUrl}/user/login`, { username, password }, { withCredentials: true });
+        const res = await axios.post(`${ServerUrl}/user/login`, { username, password }, { withCredentials: true });
     //   console.log(res)
       setUser(res.data.message.user); 
     } catch (error) {
@@ -29,7 +30,7 @@ export const UserProvider = ({ children }) => {
 
   const logout = async () => {
     try {
-      const res = await axios.post(`${baseUrl}/user/logout`, {}, { withCredentials: true });
+      const res = await axios.post(`${ServerUrl}/user/logout`, {}, { withCredentials: true });
       
       toast('Logout Successfully', {
         position: "bottom-center",

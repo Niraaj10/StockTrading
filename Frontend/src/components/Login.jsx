@@ -46,6 +46,7 @@ const Login = () => {
     };
 
 const baseUrl = 'http://localhost:5001/api'
+ const ServerUrl = 'https://stocktrading-1.onrender.com/api'
 
     const handleSign = async (e) => {
         e.preventDefault();
@@ -53,7 +54,7 @@ const baseUrl = 'http://localhost:5001/api'
         // console.log(profile);        
 
         try {
-            const res = await axios.post(`${baseUrl}/user/register`, {
+            const res = await axios.post(`${ServerUrl}/user/register`, {
                 username: signupUser.username,
                 password: signupUser.password,
                 fullname: signupUser.fullname,

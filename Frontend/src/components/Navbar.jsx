@@ -10,7 +10,13 @@ const Navbar = () => {
     const { user, logout } = useContext(UserContext)
     // console.log(user)
 
-    const socket = io('http://localhost:5001');
+    // const socket = io('http://localhost:5001');
+    const socket = io(
+        process.env.NODE_ENV === 'production'
+          ? 'https://stocktrading-1.onrender.com'
+          : 'http://localhost:5001'
+      );
+
 
     const setupSocketConnection = () => {
 
