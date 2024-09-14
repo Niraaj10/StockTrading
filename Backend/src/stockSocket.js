@@ -55,7 +55,7 @@ const stockSocket = async (io) => {
               } catch (error) {
                 console.error('Error fetching stock data:', error);
               }
-            }, 5000); 
+            }, 10000); 
         
             socket.on('disconnect', () => {
               console.log('Client disconnected');

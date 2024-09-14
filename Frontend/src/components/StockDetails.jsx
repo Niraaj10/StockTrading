@@ -5,39 +5,51 @@ import io from 'socket.io-client';
 import ReactApexChart from 'react-apexcharts';
 
 
-const StockDetails = () => {
+const StockDetails = ({ stock }) => {
   // const { stock } = useParams()
   const [stockData, setStockData] = useState([]);
   const [selectedStock, setSelectedStock] = useState('AAPL');
 
+  console.log(stock)
+
+  
+  
   const socket = io('http://localhost:5001');
-
-
-
+  
   useEffect(() => {
+    if (stock) {
+      setSelectedStock(stock);
+    }
+
+    setStockData([]);
+  }, [stock]);
+  
+  useEffect(() => {
+   if (selectedStock) {
+      socket.emit('selectStock', selectedStock);
+    }
+  
     socket.on('connect', () => {
       console.log('Connected to the socket server');
     });
-
-    socket.emit('selectStock', selectedStock);
-
+  
     socket.on('stockChartUpdates', (data) => {
       const { c, o, h, l, t } = data;
-
+  
       const newCandle = {
         x: new Date(t * 1000),
         y: [o, h, l, c],
       };
-
+  
       setStockData((prevData) => [...prevData, newCandle]);
     });
-
-
+  
     return () => {
       socket.off('stockChartUpdates');
     };
   }, [selectedStock]);
 
+  // console.log(stockData)
 
 
 
@@ -66,10 +78,10 @@ const StockDetails = () => {
 
   return (
     <>
-      <div className=''>
+      <div className='p-2 pt-4'>
         {/* StockDetails */}
 
-        <div className='relative '>
+        <div className='relative  mb-11'>
           <CiSearch size={20} className='absolute top-[7px] left-1 text-[#303030]' />
           <input type="text" className='pl-7 focus:outline-green-800 rounded-2xl w-[30vw] focus:border-none outline-none border border-[rgb(48,48,48)] bg-transparent py-1' />
         </div>
@@ -83,6 +95,7 @@ const StockDetails = () => {
         <div className='chart-container'>
           {/* <canvas ref={chartRef} width={400} height={200}></canvas> */}
 
+          <div>{selectedStock}</div>
 
           <ReactApexChart 
           options={chartOptions} 
@@ -92,7 +105,7 @@ const StockDetails = () => {
               data: stockData,
             },
           ]} 
-          type="candlestick" height={600}
+          type="candlestick" height={500}
           className='text-black'
           />
 
