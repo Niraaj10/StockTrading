@@ -10,7 +10,7 @@ const StockDetails = ({ stock }) => {
   const [stockData, setStockData] = useState([]);
   const [selectedStock, setSelectedStock] = useState('AAPL');
 
-  console.log(stock)
+  // console.log(stock)
 
   
   
@@ -49,7 +49,7 @@ const StockDetails = ({ stock }) => {
     };
   }, [selectedStock]);
 
-  // console.log(stockData)
+  console.log(stockData)
 
 
 
