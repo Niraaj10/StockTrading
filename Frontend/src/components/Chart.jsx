@@ -163,7 +163,11 @@ const Chart = () => {
                                     <div key={index} className='stock-item px-5 w-full'>
                                         <div className='flex justify-between p-2 border-b border-[#303030]'>
 
-                                            <div onClick={() => setSelectStock(stock.symbol)}>{stock.symbol}</div>
+                                            <div onClick={() => setSelectStock(stock.symbol)}>
+                                                {/* {stock.symbol} */}
+                                                {stock.symbol.includes(':') ? stock.symbol.split(':')[1] : stock.symbol}
+                                            </div>
+
 
                                             {activeTab === 'Favorites' && (
                                                 <div onClick={() => removeFavoriteStock(stock.symbol)} className='border border-[#303030] p-1 px-3 rounded-xl text-red-500'>
